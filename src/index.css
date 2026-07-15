@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+@keyframes marquee {
+    form {
+        transform: translateX(100%);
+
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+
+}
+
+.animate-marquee {
+    animation: marquee 7s linear infinite;
+}
