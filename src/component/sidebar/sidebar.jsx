@@ -1,81 +1,109 @@
-import React from 'react'
+import homeIcon from "../../assets/home.png";
+import reelIcon from "../../assets/reel.png";
+import messageIcon from "../../assets/massege.png";
+import searchIcon from "../../assets/search.png";
+import exploreIcon from "../../assets/explore.png";
+import notificationIcon from "../../assets/notification.png";
+import plusIcon from "../../assets/plus.png";
+import profileIcon from "../../assets/profile.jpg";
+import moreIcon from "../../assets/more.png";
+import metaIcon from "../../assets/meta.png";
+import instagramLogo from "../../assets/instagram.png";
 
-const menu = [
-
+const menuItems = [
     {
-        name: "home",
-        icon: <img src="src/assets/home.png" alt="img" className='w-6 invert  ' />
+        id: 1,
+        name: "Home",
+        icon: homeIcon,
     },
     {
-        name: "reel",
-        icon: <img src="src/assets/reel.png" alt="img" className='w-6 invert  ' />
+        id: 2,
+        name: "Reels",
+        icon: reelIcon,
     },
     {
-        name: "messeges",
-        icon: <img src="src/assets/massege.png" alt="img" className='w-6 invert  ' />
+        id: 3,
+        name: "Messages",
+        icon: messageIcon,
     },
     {
-        name: "search",
-        icon: <img src="src/assets/search.png" alt="img" className='w-6 invert  ' />
+        id: 4,
+        name: "Search",
+        icon: searchIcon,
     },
     {
-        name: "explore",
-        icon: <img src="src/assets/explore.png" alt="img" className='w-6 invert  ' />
+        id: 5,
+        name: "Explore",
+        icon: exploreIcon,
     },
     {
-        name: "notification",
-        icon: <img src="src/assets/notification.png" alt="img" className='w-6 invert  ' />
+        id: 6,
+        name: "Notifications",
+        icon: notificationIcon,
     },
     {
-        name: "create",
-        icon: <img src="src/assets/plus.png" alt="img" className='w-6 invert  ' />
+        id: 7,
+        name: "Create",
+        icon: plusIcon,
     },
     {
-        name: "profile",
-        icon: <img src="src/assets/profile.jpg" alt="img" className='w-6 invert  ' />
+        id: 8,
+        name: "Profile",
+        icon: profileIcon,
+        rounded: true,
     },
     {
-        name: "more",
-        icon: <img src="src/assets/more.png" alt="img" className='w-6 invert  ' />
+        id: 9,
+        name: "More",
+        icon: moreIcon,
     },
     {
-        name: "also from meta",
-        icon: <img src="src/assets/meta.png" alt="img" className='w-6 invert  ' />
-    }
-]
+        id: 10,
+        name: "Also from Meta",
+        icon: metaIcon,
+    },
+];
 
 const Sidebar = () => {
     return (
-        <div className='group w-16 hover:w-56 h-screen  text-white  duration-300 overflow-hidden'>
-            <div className='flex flex-col gap-2 mt-5'>
+        <aside className="group h-screen w-16 overflow-hidden text-white transition-all duration-300 hover:w-56">
 
-
-                <div className=" ml-2 w-fit p-2 rounded-lg hover:bg-gray-700">
+            {/* Logo */}
+            <div className="mx-2 mt-5 ">
+                <button className="rounded-lg p- hover:bg-gray-700">
                     <img
-                        src="/src/assets/inst.png"
-                        alt="img"
-                        className="w-9"
+                        src={instagramLogo}
+                        alt="Instagram"
+                        className="w-12"
                     />
-                </div>
+                </button>
+            </div>
 
-                {menu.map((item, index) => (
-                    <div key={index} className='flex items-center gap-4 p-3 mx-2 rounded-lg hover:bg-gray-700 cursor-pointer'>
-                        <span className='text-2xl min-w-8'>
-                            {item.icon}
-                        </span>
+            {/* Menu */}
+            <nav className="flex flex-col gap-2">
 
-                        <span className='className=" opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap "'>
+                {menuItems.map((item) => (
+                    <button
+                        key={item.id}
+                        className="mx-2 flex items-center gap-4 rounded-lg p-3 transition-colors hover:bg-gray-700"
+                    >
+                        <img
+                            src={item.icon}
+                            alt={item.name}
+                            className={`w-6 ${item.rounded ? "rounded-full" : "invert"
+                                }`}
+                        />
+
+                        <span className="whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                             {item.name}
                         </span>
 
-
-                    </div>
-
+                    </button>
                 ))}
-            </div>
 
-        </div>
-    )
-}
+            </nav>
+        </aside>
+    );
+};
 
-export default Sidebar
+export default Sidebar;
